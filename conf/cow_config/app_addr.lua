@@ -171,6 +171,7 @@ function _M.payed()
 	end
 	
 	local host_port = data.host_port
+	
 	_M.resend(host_port, payid, orderid, ext, paytime, goodsname, money, goodsnum, sign)
 end
 
@@ -180,7 +181,7 @@ function _M.resend(host_port, payid, orderid, ext, paytime, goodsname, money, go
 	-- 正常请求
 	local httpc = http.new();
 	httpc.timeout = 2000;
-	local res, err = httpc:request_uri("http://"..host_port.."/gm_intf/gm_recharge", {
+	local res, err = httpc:request_uri("http://"..host_port.."/external/recharge", {
 		method = "POST",
 		body = data
 	})
